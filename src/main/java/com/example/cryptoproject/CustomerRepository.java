@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerRepository {
-    private List<Customer> customers = new ArrayList<>();
+    private final List<Customer> customers = new ArrayList<>();
 
-    private static final int customerNextId = 0;
+    private static int customerNextId = 0;
 
     private int generateUniqueId() {
         return customerNextId++;
@@ -17,7 +17,8 @@ public class CustomerRepository {
 
         customers.add(customer);
 
-                System.out.println("Registration successful!");
+        System.out.println("Registration successful!" + customer);
+
 
     }
 }
