@@ -40,7 +40,8 @@ public class CustomerController {
                 customerService.registerCustomer(name, surname, identifier, email, number, password, password2);
                 break;
             case 2:
-                System.out.println("");
+                System.out.println("You are redirected to the sign up page.");
+                return showRegistrationPage();
         }
         }
          else {

@@ -8,7 +8,8 @@ public class CustomerRepository {
     public void saveCustomer(Customer customer) {
 
         customers.add(customer);
-        System.out.println("Registration successfull!");
+
+                System.out.println("Registration successful!");
 
     }
 }
