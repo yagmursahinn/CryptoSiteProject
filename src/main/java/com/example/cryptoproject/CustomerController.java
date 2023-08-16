@@ -5,14 +5,15 @@ import org.springframework.stereotype.Controller;
 
 import java.util.Scanner;
 public class CustomerController {
-    private CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    private CustomerService customerService = new CustomerService();
+    private Scanner scanner;
+
+    public CustomerController(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public String showRegistrationPage() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name:");
         String name = scanner.nextLine();
         System.out.println("Enter your surname:");

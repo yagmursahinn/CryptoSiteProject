@@ -6,19 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
-@SpringBootApplication
 public class CryptoProjectApplication {
 
-    private static com.example.cryptoproject.Customer Customer;
+    private CustomerController customerController = new CustomerController(new Scanner(System.in));
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        CustomerRepository customerRepository = new CustomerRepository();
-        CustomerService customerService = new CustomerService(customerRepository);
-        CustomerController customerController = new CustomerController(customerService);
 
 
-        SpringApplication.run(CryptoProjectApplication.class, args);
 
 while(true) {
     System.out.println("Please choose an option:");
