@@ -1,17 +1,12 @@
 package com.example.cryptoproject;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.stereotype.Controller;
 
 
-import java.util.Scanner;
+import static com.example.cryptoproject.CryptoProjectApplication.scanner;
+
 public class CustomerController {
+    private final CustomerService customerService = new CustomerService();
 
-    private CustomerService customerService = new CustomerService();
-    private Scanner scanner;
 
-    public CustomerController(Scanner scanner) {
-        this.scanner = scanner;
-    }
 
     public String showRegistrationPage() {
         System.out.println("Enter your name:");
@@ -31,23 +26,21 @@ public class CustomerController {
 
         if(password.equals(password2)) {
 
-        int choice;
-        System.out.println("If you want to create this account please provide! : 1 - Create, 2 - Back to main page");
+            int choice;
+            System.out.println("If you want to create this account please provide! : 1 - Create, 2 - Back to main page");
 
 
-        choice = scanner.nextInt();
-        switch (choice) {
-            case 1:
-                customerService.registerCustomer(name, surname, identifier, email, number, password, password2);
-                break;
-            case 2:
-                System.out.println("You are redirected to the sign up page.");
-                return showRegistrationPage();
-        }
-        }
-         else {
-             System.out.println("2nd password does not match with the 1st");
-             return showRegistrationPage();
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1 -> customerService.registerCustomer(name, surname, identifier, email, number, password);
+                case 2 -> {
+                    System.out.println("You are redirected to the sign up page.");
+                    return showRegistrationPage();
+                }
+            }
+        } else {
+            System.out.println("2nd password does not match with the 1st");
+            return showRegistrationPage();
 
         }
         return "Enjoy!";

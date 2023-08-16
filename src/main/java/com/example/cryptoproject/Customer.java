@@ -1,86 +1,79 @@
 package com.example.cryptoproject;
 
 public class Customer {
-    private int id;
-    private String CustomerName;
-    private String CustomerSurname;
+    private Integer id;
+    private String name;
+    private String surname;
 
-    private String CustomerIdentifier;
-    private String CustomerEmail;
+    private String identifier;
+    private String email;
 
-    private String CustomerNumber;
-    private String CustomerPassword;
+    private String number;
+    private String password;
 
-    private String CustomerPassword2;
 
-    // Constructor, getters, setters
-    public Customer(int id, String name, String surname, String Identifier, String email, String number, String password, String password2) {
+// Constructor, getters, setters
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
-        return CustomerName;
+        return name;
     }
 
     public void setName(String name) {
-        this.CustomerName = name;
-
+        this.name = name;
     }
+
     public String getSurname() {
-        return CustomerSurname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        this.CustomerSurname = surname;
-
+        this.surname = surname;
     }
 
     public String getIdentifier() {
-        return CustomerIdentifier;
+        return identifier;
     }
 
     public void setIdentifier(String identifier) {
-        this.CustomerIdentifier = identifier;
-
+        this.identifier = identifier;
     }
-    public String getEmail(){
-        return CustomerEmail;
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
-        this.CustomerEmail = email;
-    }
-
-    public String getPassword() {
-
-        return CustomerPassword;
-    }
-
-    public void setPassword(String password) {
-
-        this.CustomerPassword = password;
-    }
-
-    public String getPassword2() {
-
-        return CustomerPassword2;
-    }
-
-    public void setPassword2(String password2) {
-
-        this.CustomerPassword2 = password2;
+        this.email = email;
     }
 
     public String getNumber() {
-        return CustomerNumber;
+        return number;
     }
 
     public void setNumber(String number) {
-        this.CustomerNumber = number;
-
+        this.number = number;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-
+    @Override
+    public String toString() {
+        return "customer: id= " + id + " name=" + name;
+    }
 
 }
