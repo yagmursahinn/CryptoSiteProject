@@ -26,7 +26,7 @@ public class CryptoProjectApplication {
 
     switch (option) {
         case 1 -> customerController.showRegistrationPage();
-        case 2 -> System.out.println("Login part not ready yet!");
+        case 2 -> customerController.showLoginPage();
         case 3 -> {
             System.out.println("logged");
             exit = true;

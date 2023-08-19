@@ -1,7 +1,7 @@
 package com.example.cryptoproject;
 
 
-import static com.example.cryptoproject.CryptoProjectApplication.scanner;
+import java.util.Scanner;
 
 public class CustomerController {
     private final CustomerService customerService = new CustomerService();
@@ -9,6 +9,7 @@ public class CustomerController {
 
 
     public String showRegistrationPage() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter your name:");
         String name = scanner.nextLine();
         System.out.println("Enter your surname:");
@@ -27,6 +28,7 @@ public class CustomerController {
         if(password.equals(password2)) {
 
             int choice;
+
             System.out.println("If you want to create this account please provide! : 1 - Create, 2 - Back to main page");
 
 
@@ -44,5 +46,25 @@ public class CustomerController {
 
         }
         return "Enjoy!";
+    }
+
+    public void showLoginPage() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("email");
+        String email = scanner.nextLine();
+        System.out.println("password");
+        String password = scanner.nextLine();
+
+        int choice2;
+        System.out.println("1 - Provide 2 - Settings, 3 - Logout");
+
+        choice2 = scanner.nextInt();
+        switch (choice2) {
+            case 1 -> customerService.loginCustomer(email, password);
+            case 2 -> System.out.println("Settings are not ready yet!");
+            case 3 -> System.out.println("Logout is not ready yet!!");
+
+        }
+
     }
 }

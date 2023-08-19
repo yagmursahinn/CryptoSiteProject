@@ -17,8 +17,19 @@ public class CustomerRepository {
 
         customers.add(customer);
 
-        System.out.println("Registration successful!" + customer);
+        System.out.println("Registration successful!\n" + customer);
 
 
     }
+
+    public Customer findAccount(String email) {
+        for (Customer customer : customers) {
+            if (customer.getEmail().equals(email)) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
+
 }
