@@ -1,4 +1,4 @@
-package com.example.cryptoproject;
+package com.example.cryptoproject.entity;
 
 public class Customer {
     private Integer id;
