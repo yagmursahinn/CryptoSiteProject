@@ -1,5 +1,6 @@
 package com.example.cryptoproject.service;
 
+import com.example.cryptoproject.CryptoProjectApplication;
 import com.example.cryptoproject.entity.Customer;
 import com.example.cryptoproject.repository.CustomerRepository;
 
@@ -19,6 +20,7 @@ public class CustomerService {
         }
 
         System.out.println("Login process is succesful!");
+        CryptoProjectApplication.getBack();
     }
 }
 

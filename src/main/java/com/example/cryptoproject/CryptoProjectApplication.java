@@ -1,9 +1,7 @@
 package com.example.cryptoproject;
 
-
-
-
 import com.example.cryptoproject.controller.CustomerController;
+import com.example.cryptoproject.controller.MarketController;
 
 import java.util.Scanner;
 
@@ -12,25 +10,23 @@ public class CryptoProjectApplication {
 
     public static Scanner scanner = new Scanner(System.in);
     public static CustomerController customerController = new CustomerController();
+    public static MarketController marketController = new MarketController();
+
 
 
     public static void main(String[] args) {
         boolean exit = false;
 
-
         while (!exit) {
     System.out.println("Please choose an option:");
     int option;
-    System.out.println("1 - Register, 2 - Login, 3 - Logout");
+            System.out.println("1 - Register, 2 - Login");
     option = scanner.nextInt();
 
     switch (option) {
         case 1 -> showRegistrationPage();
         case 2 -> showLoginPage();
-        case 3 -> {
-            System.out.println("logged");
-            exit = true;
-        }
+
         default ->
             System.out.println("please enter any valid option");
 
@@ -98,9 +94,27 @@ public class CryptoProjectApplication {
     }
 
     private static void showMainPage() {
+        Scanner scanner = new Scanner(System.in);
+
+
+        int choice3;
         System.out.println("1 - Market Listesi 2 - Para Yatırma, 3 - Para Çekme");
 
+
+        choice3 = scanner.nextInt();
+
+        switch (choice3) {
+            case 1 -> marketController.market();
+            case 2 -> System.out.println("You can deposit your money here");
+            case 3 -> System.out.println("You can withdraw your money here");
+        }
+
     }
+
+    public static void getBack() {
+        showMainPage();
+    }
+
 }
 
 
