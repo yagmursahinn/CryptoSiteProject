@@ -2,17 +2,16 @@ package com.example.cryptoproject.entity;
 
 public class Market {
 
-    private static String name;
-
-    private static double price;
-    private static double difference;
-    private static double volume;
+    private String name;
+    private double price;
+    private double difference;
+    private double volume;
 
     public Market(String name, double price, double difference, double volume) {
-        Market.name = name;
-        Market.price = price;
-        Market.difference = difference;
-        Market.volume = volume;
+        this.name = name;
+        this.price = price;
+        this.difference = difference;
+        this.volume = volume;
 
     }
 

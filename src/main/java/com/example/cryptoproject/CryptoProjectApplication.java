@@ -33,6 +33,8 @@ public class CryptoProjectApplication {
     }
 
         }
+
+
     }
 
     private static String showRegistrationPage() {
