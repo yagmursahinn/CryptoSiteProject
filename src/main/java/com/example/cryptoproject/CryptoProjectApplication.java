@@ -2,6 +2,7 @@ package com.example.cryptoproject;
 
 import com.example.cryptoproject.controller.CustomerController;
 import com.example.cryptoproject.controller.MarketController;
+import com.example.cryptoproject.entity.Customer;
 
 import java.util.Scanner;
 
@@ -63,7 +64,14 @@ public class CryptoProjectApplication {
 
             choice = scanner.nextInt();
             switch (choice) {
-                case 1 -> customerController.create(name, surname, identifier, email, number, password);
+                case 1 -> {
+                    try {
+                        Customer customer = customerController.create(name, surname, identifier, email, number, password);
+                        System.out.println("Saved ".concat(customer.toString()));
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
                 case 2 -> {
                     System.out.println("You are redirected to the sign up page.");
                     return showRegistrationPage();
@@ -89,7 +97,15 @@ public class CryptoProjectApplication {
 
         choice2 = scanner.nextInt();
         switch (choice2) {
-            case 1 -> customerController.login(email, password);
+            case 1 -> {
+                try {
+                    customerController.login(email, password);
+                    System.out.println("Login process is succesful!");
+                    getBack();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
             case 2 -> System.out.println("Settings are not ready yet!");
             case 3 -> System.out.println("Logout is not ready yet!!");
         }
@@ -100,14 +116,13 @@ public class CryptoProjectApplication {
 
 
         int choice3;
-        System.out.println("1 - Market Listesi 2 - Para Yatırma, 3 - Para Çekme");
-
+        System.out.println("1 - Türk Lirası Yatırma ve Çekme 2 - Kripto Para Alım ve Satım ");
 
         choice3 = scanner.nextInt();
 
         switch (choice3) {
-            case 1 -> marketController.market();
-            case 2 -> System.out.println("You can deposit your money here");
+            case 1 -> System.out.println("You can deposit your money here");
+            case 2 -> marketController.market();
             case 3 -> System.out.println("You can withdraw your money here");
         }
 

@@ -13,12 +13,12 @@ public class CustomerRepository {
         return customerNextId++;
     }
 
-    public void save(Customer customer) {
+    public Customer save(Customer customer) {
         customer.setId(generateUniqueId());
 
         customers.add(customer);
 
-        System.out.println("Registration successful!\n" + customer);
+        return customer;
     }
 
     public Customer findByEmail(String email) {
