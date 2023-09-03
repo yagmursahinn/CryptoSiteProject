@@ -1,9 +1,14 @@
 package com.example.cryptoproject;
 
+import com.example.cryptoproject.controller.CustomerAssetController;
 import com.example.cryptoproject.controller.CustomerController;
 import com.example.cryptoproject.controller.MarketController;
 import com.example.cryptoproject.entity.Customer;
+import com.example.cryptoproject.entity.Market;
+import com.example.cryptoproject.repository.CustomerAssetRepository;
 
+import java.math.BigDecimal;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -114,22 +119,69 @@ public class CryptoProjectApplication {
     private static void showMainPage() {
         Scanner scanner = new Scanner(System.in);
 
-
         int choice3;
         System.out.println("1 - Türk Lirası Yatırma ve Çekme 2 - Kripto Para Alım ve Satım ");
 
         choice3 = scanner.nextInt();
 
-        switch (choice3) {
-            case 1 -> System.out.println("You can deposit your money here");
-            case 2 -> marketController.market();
-            case 3 -> System.out.println("You can withdraw your money here");
-        }
 
+        long id = CustomerAssetRepository.generateUniqueId();
+        System.out.println("enter your customerId");
+        long customerId = scanner.nextLong();
+        System.out.println("enter your assetId, 1-BTC, 2-TL, 3-TRX, 4-Tether");
+        long assetId = scanner.nextLong();
+        System.out.println("enter your amount");
+        BigDecimal amount = scanner.nextBigDecimal();
+
+
+        switch (choice3) {
+            case 1 -> {
+                System.out.println("1 - Deposit or 2 - Withdraw");
+                int dOrW = scanner.nextInt();
+
+                switch (dOrW) {
+                    case 1 -> {
+                        try {
+                            CustomerAssetController.deposit(id, customerId, assetId, amount);
+                            System.out.println("progress id: " + id + " customer id: " + customerId + " assetId: " + assetId + " amount: " + amount);
+                            System.out.println("deposit progress is successful");
+
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    case 2 -> {
+                        try {
+                            CustomerAssetController.withdraw(id, customerId, assetId, amount);
+                            System.out.println("progress id: " + id + " customer id: " + customerId + " assetId: " + assetId + " amount: " + amount);
+                            System.out.println("Withdraw progress is successful");
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+
+                    }
+                }
+            }
+            case 2 -> System.out.println("crypto");
+
+
+            case 3 -> {
+                List<Market> marketList = marketController.getAll();
+                printMarketList(marketList);
+            }
+        }
     }
 
     public static void getBack() {
         showMainPage();
+    }
+
+    public static void printMarketList(List<Market> coins) {
+        System.out.println("Market list is here: ");
+        for (Market coin : coins) {
+            System.out.println(coin);
+        }
+
     }
 
 }
